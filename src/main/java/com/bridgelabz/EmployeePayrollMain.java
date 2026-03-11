@@ -6,6 +6,8 @@ public class EmployeePayrollMain {
 
         EmployeePayrollService service = new EmployeePayrollService();
 
-        service.getSalaryStatisticsByGender();
+        service.addEmployee("Rahul", 3500000, "M", "2023-01-10");
+
+        service.readEmployeeData();
     }
 }

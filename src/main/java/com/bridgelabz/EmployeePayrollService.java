@@ -111,4 +111,24 @@ public class EmployeePayrollService {
             e.printStackTrace();
         }
     }
+    public void addEmployee(String name, double salary, String gender, String startDate) {
+
+        String query = "INSERT INTO employee_payroll (name, salary, gender, start) VALUES (?, ?, ?, ?)";
+
+        try (Connection connection = DBConnection.getConnection();
+             java.sql.PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, name);
+            preparedStatement.setDouble(2, salary);
+            preparedStatement.setString(3, gender);
+            preparedStatement.setString(4, startDate);
+
+            int rowsInserted = preparedStatement.executeUpdate();
+
+            System.out.println("Employee added successfully. Rows inserted: " + rowsInserted);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
