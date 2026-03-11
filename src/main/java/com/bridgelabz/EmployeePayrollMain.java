@@ -6,6 +6,6 @@ public class EmployeePayrollMain {
 
         EmployeePayrollService service = new EmployeePayrollService();
 
-        service.getEmployeesByDateRange("2018-01-01", "2022-12-31");
+        service.getSalaryStatisticsByGender();
     }
 }
