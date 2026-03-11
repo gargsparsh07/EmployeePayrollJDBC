@@ -53,4 +53,32 @@ public class EmployeePayrollService {
             e.printStackTrace();
         }
     }
+    public void getEmployeesByDateRange(String startDate, String endDate) {
+
+        String query = "SELECT * FROM employee_payroll WHERE start BETWEEN ? AND ?";
+
+        try (Connection connection = DBConnection.getConnection();
+             java.sql.PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, startDate);
+            preparedStatement.setString(2, endDate);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                double salary = resultSet.getDouble("salary");
+
+                EmployeePayrollData employee =
+                        new EmployeePayrollData(id, name, salary);
+
+                System.out.println(employee);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

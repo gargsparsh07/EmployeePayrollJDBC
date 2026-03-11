@@ -6,8 +6,6 @@ public class EmployeePayrollMain {
 
         EmployeePayrollService service = new EmployeePayrollService();
 
-        service.updateEmployeeSalary("Terisa", 4000000);
-
-        service.readEmployeeData();
+        service.getEmployeesByDateRange("2018-01-01", "2022-12-31");
     }
 }
