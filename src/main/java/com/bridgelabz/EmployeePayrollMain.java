@@ -4,10 +4,10 @@ public class EmployeePayrollMain {
 
     public static void main(String[] args) {
 
+        System.out.println("UC7 - Salary Statistics by Gender");
+
         EmployeePayrollService service = new EmployeePayrollService();
 
-        service.addEmployee("Rahul", 3500000, "M", "2023-01-10");
-
-        service.readEmployeeData();
+        service.getSalaryStatisticsByGender();
     }
 }
