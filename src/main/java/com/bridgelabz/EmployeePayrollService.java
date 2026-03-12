@@ -113,4 +113,20 @@ public class EmployeePayrollService {
             e.printStackTrace();
         }
     }
+    public void getEmployeeDepartment() {
+
+        String query = "SELECT e.name, d.department_name FROM employee e JOIN employee_department ed ON e.employee_id = ed.employee_id JOIN department d ON ed.department_id = d.department_id";
+
+        try (Connection connection = DBConnection.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+
+            while(resultSet.next()) {
+                System.out.println(resultSet.getString(1) + " : " + resultSet.getString(2));
+            }
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
